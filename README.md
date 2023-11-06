@@ -28,6 +28,6 @@
 
 ![image](https://github.com/chagins/microfrontends/assets/46863533/3971eedc-5a4b-451e-b2d3-ee907f8d05eb)
 
-### Container network loading before ModuleFederationPlugin sharing module setup:
+### Container network loading after ModuleFederationPlugin sharing module setup:
 
 ![image](https://github.com/chagins/microfrontends/assets/46863533/9b455ce4-1628-4847-b19f-b321ac190c77)
