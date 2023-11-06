@@ -26,7 +26,7 @@
 
 ### ModuleFederationPlugin sharing module setup:
 
-![image](https://github.com/chagins/microfrontends/assets/46863533/3971eedc-5a4b-451e-b2d3-ee907f8d05eb)
+![image](https://github.com/chagins/microfrontends/assets/46863533/53cc9a3b-8af5-4cae-9ecb-ba2c4ce70550)
 
 ### Container network loading after ModuleFederationPlugin sharing module setup:
 
