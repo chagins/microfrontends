@@ -7,3 +7,5 @@
 ![image](https://github.com/chagins/microfrontends/assets/46863533/f763a3eb-1306-4e5a-9e74-bafe96ba1558)
 
 ![image](https://github.com/chagins/microfrontends/assets/46863533/6e57cbf9-0582-4917-8b59-b56269c4702a)
+
+![image](https://github.com/chagins/microfrontends/assets/46863533/4537bc8a-b384-4552-940f-ffccf03db79a)
