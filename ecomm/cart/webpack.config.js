@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const deps = require('./package.json').dependencies;
+const devDeps = require('./package.json').devDependencies;
 
 module.exports = {
   mode: 'development',
@@ -13,7 +15,14 @@ module.exports = {
       exposes: {
         './CartShow': './src/index'
       },
-      shared: ['@faker-js/faker', 'moment/moment'],
+      shared: {
+        '@faker-js/faker': devDeps['@faker-js/faker'],
+        'moment': deps.moment,
+        'uuid': {
+          requiredVersion: deps.uuid,
+          singleton: true,
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'
