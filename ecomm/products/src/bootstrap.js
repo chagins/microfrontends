@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker';
 import moment from 'moment/moment';
+import { v4 } from 'uuid';
 
-const title = `<h1>Products container</h1>`
+const title = `<h1>Products container ${v4()}</h1>`
 const date = `<p>${moment()}</p>`
 let products = '';
 
