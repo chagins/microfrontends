@@ -17,6 +17,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "moment": "2.29.4"
+    "moment": "2.29.4",
+    "uuid": "9.0.0"
   }
 }
