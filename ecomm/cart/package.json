@@ -17,6 +17,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "moment": "2.29.4"
+    "moment": "1.7.2"
   }
 }
