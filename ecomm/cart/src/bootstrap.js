@@ -1,10 +1,21 @@
 import { faker } from '@faker-js/faker';
 import moment from 'moment/moment';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 
-const title = `<h1>Cart container ${v4()}</h1>`
-const date = `<p>${moment()}</p>`
-const cartText = `<div>You have ${faker.number.int({ min: 0, max: 10 })} items in your cart</div>`;
-const cartContainer = `<div>${title}${date}${cartText}</div>`;
+const mount = (rootEl) => {
+  const title = `<h1>Cart container ${v4()}</h1>`
+  const date = `<p>${moment()}</p>`
+  const cartText = `<div>You have ${faker.number.int({ min: 0, max: 10 })} items in your cart</div>`;
+  const cartContainer = `<div>${title}${date}${cartText}</div>`;
 
-document.querySelector('#dev-cart').innerHTML = cartContainer;
+  rootEl.innerHTML = cartContainer;
+}
+
+if (process.env.NODE_ENV === 'development') {
+  const rootEl = document.querySelector('#dev-cart');
+
+  // running in isolation
+  if (rootEl) {
+    mount(rootEl);
+  }
+}
