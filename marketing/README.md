@@ -6,4 +6,4 @@
 
 ## Marketing MFE pages
 
-![image](https://github.com/chagins/microfrontends/assets/46863533/42010e33-9488-414d-93ab-bc385888c0d1)
+![image](https://github.com/chagins/microfrontends/assets/46863533/62776a7e-43f3-447f-8d3f-03b5d35dbc39)
