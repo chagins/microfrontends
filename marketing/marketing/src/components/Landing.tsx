@@ -8,14 +8,13 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import React from "react";
 import { Link } from "react-router-dom";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export const Landing = () => {
   return (
-    <React.Fragment>
+    <>
       <main>
         {/* Hero unit */}
         <div>
@@ -83,6 +82,6 @@ export const Landing = () => {
           </Grid>
         </Container>
       </main>
-    </React.Fragment>
+    </>
   );
 };

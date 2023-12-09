@@ -9,8 +9,10 @@ const devConfig: webpack.Configuration = {
   mode: "development",
   devServer: {
     port: 8081,
-    historyApiFallback: {
-      index: "index.html",
+    historyApiFallback: true,
+    hot: true,
+    client: {
+      overlay: false,
     },
   },
   plugins: [
