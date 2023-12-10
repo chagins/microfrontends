@@ -1,5 +1,5 @@
 import path from "path";
-import webpack from "webpack";
+import webpack, { container } from "webpack";
 import { merge } from "webpack-merge";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import "webpack-dev-server";
@@ -16,6 +16,13 @@ const devConfig: webpack.Configuration = {
     },
   },
   plugins: [
+    new container.ModuleFederationPlugin({
+      name: "marketing",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./MarketingApp": "./src/bootstrap",
+      },
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve("public", "index.html"),
     }),

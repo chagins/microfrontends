@@ -1,8 +1,8 @@
 import path from "path";
-import webpack from "webpack";
-import { merge } from "webpack-merge";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import "webpack-dev-server";
+import webpack, { container } from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { merge } from "webpack-merge";
 import commonConfig from "./webpack.common";
 
 const devConfig: webpack.Configuration = {
@@ -16,6 +16,12 @@ const devConfig: webpack.Configuration = {
     },
   },
   plugins: [
+    new container.ModuleFederationPlugin({
+      name: "container",
+      remotes: {
+        marketing: "marketing@http://localhost:8081/remoteEntry.js",
+      },
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve("public", "index.html"),
     }),

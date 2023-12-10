@@ -11,7 +11,18 @@ const commonConfig: webpack.Configuration = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
-      }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/fonts/[hash][ext][query]",
+        },
+      },
     ],
   },
   resolve: {
