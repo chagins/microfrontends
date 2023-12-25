@@ -4,6 +4,7 @@ import { merge } from "webpack-merge";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import "webpack-dev-server";
 import commonConfig from "./webpack.common";
+import { dependencies } from "../../package.json";
 
 const devConfig: webpack.Configuration = {
   mode: "development",
@@ -22,6 +23,7 @@ const devConfig: webpack.Configuration = {
       exposes: {
         "./MarketingApp": "./src/bootstrap",
       },
+      shared: dependencies,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve("public", "index.html"),

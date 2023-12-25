@@ -4,6 +4,7 @@ import webpack, { container } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { merge } from "webpack-merge";
 import commonConfig from "./webpack.common";
+import { dependencies } from "../../package.json";
 
 const devConfig: webpack.Configuration = {
   mode: "development",
@@ -21,6 +22,7 @@ const devConfig: webpack.Configuration = {
       remotes: {
         marketing: "marketing@http://localhost:8081/remoteEntry.js",
       },
+      shared: dependencies,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve("public", "index.html"),
