@@ -55,7 +55,7 @@ export const Pricing = () => {
         <Container maxWidth="md">
           <Grid container spacing={4} padding={2} justifyContent="center">
             {plans.map((plan) => (
-              <Grid item xs={4}>
+              <Grid key={plan.title} item xs={4}>
                 <Card>
                   <CardHeader
                     key={plan.title}
