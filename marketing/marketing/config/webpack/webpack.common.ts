@@ -1,4 +1,6 @@
+import path from "path";
 import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const commonConfig: webpack.Configuration = {
   module: {
@@ -25,6 +27,11 @@ const commonConfig: webpack.Configuration = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve("public", "index.html"),
+    }),
+  ],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },

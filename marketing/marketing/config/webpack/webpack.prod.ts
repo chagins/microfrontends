@@ -1,18 +1,13 @@
 import webpack, { container } from "webpack";
 import { merge } from "webpack-merge";
-import "webpack-dev-server";
 import commonConfig from "./webpack.common";
 import { dependencies } from "../../package.json";
 
-const devConfig: webpack.Configuration = {
-  mode: "development",
-  devServer: {
-    port: 8081,
-    historyApiFallback: true,
-    hot: true,
-    client: {
-      overlay: false,
-    },
+const prodConfig: webpack.Configuration = {
+  mode: "production",
+  output: {
+    filename: '[name].[contenthash].js',
+    clean: true,
   },
   plugins: [
     new container.ModuleFederationPlugin({
@@ -26,4 +21,4 @@ const devConfig: webpack.Configuration = {
   ],
 };
 
-export default merge(commonConfig, devConfig);
+export default merge(commonConfig, prodConfig);
