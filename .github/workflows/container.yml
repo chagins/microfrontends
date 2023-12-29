@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "marketing/container/**"
-      - "workflows/container.yml"
+      - "container.yml"
     types: [closed]
 
 defaults:
