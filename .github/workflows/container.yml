@@ -8,7 +8,6 @@ on:
       - "marketing/container/**"
   workflow_dispatch: 
 
-
 defaults:
   run:
     working-directory: marketing/container
