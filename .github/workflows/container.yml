@@ -15,20 +15,22 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+          node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
-
       - name: install NPM dependencies
         run: npm install
 
       - name: build app
         run: npm run build:prod
 
-      - name: Yandex.Cloud Object Storage Upload (S3)
-        uses: MrMeison/yc-object-storage-action@1.2.1
+      - name: Yandex Object Storage Action
+        uses: MrMeison/yc-object-storage-upload-action@main
         with:
           accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
           secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
           bucketName: ${{ secrets.BUCKET }}
-          sourceDir: ./dist
+          sourceDir: dist
           clear: true
