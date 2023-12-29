@@ -31,11 +31,11 @@ jobs:
       - name: build app
         run: npm run build:prod
 
-      - name: Yandex object storage static website
-        uses: nekitcorp/yandex-storage-website-action@v2
+      - name: Yandex.Cloud Object Storage Upload (S3)
+        uses: MrMeison/yc-object-storage-action@1.2.1
         with:
-          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.BUCKET }}
-          include: ./dist/**
+          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          bucketName: ${{ secrets.BUCKET }}
+          sourceDir: ./dist
           clear: true
