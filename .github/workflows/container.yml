@@ -7,10 +7,6 @@ on:
     paths:
       - "marketing/container/**"
   workflow_dispatch:
-  pull_request:
-    types:
-      - closed
-
 
 defaults:
   run:
@@ -36,5 +32,5 @@ jobs:
           access-key-id: ${{ secrets.ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
-          working-directory: dist
+          working-directory: ./dist
           clear: true
