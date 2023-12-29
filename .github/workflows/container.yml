@@ -7,9 +7,6 @@ on:
     paths:
       - "marketing/container/**"
   workflow_dispatch:
-  pull_request:
-    types:
-      - closed
 
 defaults:
   run:
@@ -18,22 +15,22 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-          node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: install NPM dependencies
-        run: npm install
+        run: npm ci
 
       - name: build app
         run: npm run build:prod
 
-      - name: Yandex Object Storage Action
-        uses: MrMeison/yc-object-storage-upload-action@main
+      - name: Yandex object storage static website
+        uses: nekitcorp/yandex-storage-website-action@v2
         with:
-          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
-          bucketName: ${{ secrets.BUCKET }}
-          sourceDir: dist
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          working-directory: ./dist
           clear: true
