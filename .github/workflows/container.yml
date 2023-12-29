@@ -7,7 +7,6 @@ on:
     paths:
       - "marketing/container/**"
     types: [closed]
-  workflow_dispatch:
 
 defaults:
   run:
