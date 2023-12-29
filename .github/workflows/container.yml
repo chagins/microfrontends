@@ -30,11 +30,10 @@ jobs:
       - name: build app
         run: npm run build:prod
 
-      - name: Yandex Object Storage Action
-        uses: povetek/yandex-object-storage-action@v3
+      - name: Upload to Yandex S3 Object Storag
+        uses: paulvstrashnov/yandex-s3-upload-action@v1.0.0
         with:
-          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
-          path: dist
-          clear: true
+          localPath: "./dist"
