@@ -30,10 +30,11 @@ jobs:
       - name: build app
         run: npm run build:prod
 
-      - name: Upload to Yandex S3 Object Storag
-        uses: paulvstrashnov/yandex-s3-upload-action@v1.0.0
+      - name: Yandex object storage static website
+        uses: NekitCorp/yandex-storage-website-action@v2.1.0
         with:
-          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
-          localPath: "./marketing/container/dist"
+          working-directory: "./marketing/container/dist"
+          clear: true
