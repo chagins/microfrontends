@@ -1,11 +1,12 @@
 name: deploy-container
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
       - "marketing/container/**"
+    types: [closed]
   workflow_dispatch:
 
 defaults:
@@ -13,7 +14,8 @@ defaults:
     working-directory: marketing/container
 
 jobs:
-  build:
+  deploy:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
