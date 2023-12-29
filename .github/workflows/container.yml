@@ -16,9 +16,8 @@ defaults:
 
 jobs:
   deploy:
-    if: |
-      ${{ github.event_name }} == "workflow_dispatch" ||
-      ${{ github.event_name }} == "pull_request" && ${{github.event.pull_request.base.ref}} == "main"
+    if: ${{ github.event_name }} == "workflow_dispatch" ||
+      ${{ github.event_name }} == "pull_request" && ${{github.event.pull_request.merged }} == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,11 +30,11 @@ jobs:
       - name: build app
         run: npm run build:prod
 
-      - name: Yandex.Cloud Object Storage Upload (S3)
-        uses: MrMeison/yc-object-storage-action@1.2.1
+      - name: Yandex Object Storage Action
+        uses: povetek/yandex-object-storage-action@v3
         with:
-          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
-          bucketName: ${{ secrets.BUCKET }}
-          sourceDir: ./dist
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          path: dist
           clear: true
