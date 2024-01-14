@@ -31,7 +31,7 @@ jobs:
         run: npm run build:prod
 
       - name: Yandex object storage upload action
-        uses: chagins/yandex-object-storage-upload-action@v1.0.0
+        uses: chagins/yandex-object-storage-upload-action@v1.0.1
         with:
           access_key_id: ${{ secrets.ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
