@@ -5,7 +5,7 @@ import { merge } from "webpack-merge";
 import commonConfig from "./webpack.common";
 import { dependencies } from "../../package.json";
 
-const domain = process.env.PRODUCTION_DOMAIN;
+const marketingDomain = process.env.MARKETING_DOMAIN;
 
 const prodConfig: webpack.Configuration = {
   mode: "production",
@@ -17,7 +17,7 @@ const prodConfig: webpack.Configuration = {
     new container.ModuleFederationPlugin({
       name: "container",
       remotes: {
-        marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+        marketing: `marketing@${marketingDomain}/latest/remoteEntry.js`,
       },
       shared: dependencies,
     }),
