@@ -1,4 +1,4 @@
-name: deploy-container
+name: deploy-marketing
 
 on:
   workflow_dispatch:
@@ -6,12 +6,12 @@ on:
     branches:
       - main
     paths:
-      - 'marketing/container/**'
-      - '.github/workflows/container.yml'
+      - 'marketing/marketing/**'
+      - '.github/workflows/marketing.yml'
 
 defaults:
   run:
-    working-directory: marketing/container
+    working-directory: marketing/marketing
 
 jobs:
   deploy:
@@ -26,8 +26,6 @@ jobs:
 
       - name: build app
         run: npm run build:prod
-        env:
-          MARKETING_DOMAIN: ${{ secrets.MARKETING_DOMAIN }}
 
       - name: Yandex object storage upload action
         uses: chagins/yandex-object-storage-upload-action@v0.0.5
@@ -35,6 +33,6 @@ jobs:
           access_key_id: ${{ secrets.ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
-          source_path: "./marketing/container/dist"
-          dest_path: "container/latest"
+          source_path: "./marketing/marketing/dist"
+          dest_path: "marketing/latest"
           clear: true
