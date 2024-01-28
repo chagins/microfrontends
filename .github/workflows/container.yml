@@ -2,13 +2,12 @@ name: deploy-container
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
     branches:
       - main
     paths:
-      - "marketing/container/**"
-      - "container.yml"
-    types: [closed]
+      - 'marketing/container/**'
+      - '.github/workflows/container.yml'
 
 defaults:
   run:
@@ -16,12 +15,10 @@ defaults:
 
 jobs:
   deploy:
-    if: ${{ github.event_name }} == "workflow_dispatch" ||
-      ${{ github.event_name }} == "pull_request" && ${{github.event.pull_request.merged }} == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: install NPM dependencies
@@ -31,10 +28,11 @@ jobs:
         run: npm run build:prod
 
       - name: Yandex object storage upload action
-        uses: chagins/yandex-object-storage-upload-action@v1.0.3
+        uses: chagins/yandex-object-storage-upload-action@v0.0.5
         with:
           access_key_id: ${{ secrets.ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
           source_path: "./marketing/container/dist"
           dest_path: "./container/latest"
+          clear: true
