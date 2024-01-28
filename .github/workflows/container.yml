@@ -34,5 +34,4 @@ jobs:
           secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
           source_path: "./marketing/container/dist"
-          dest_path: "./container/latest"
           clear: true
